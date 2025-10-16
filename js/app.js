@@ -232,6 +232,30 @@ function saveFavorite() {
   setStatus("Saved to favorites.");
 }
 
+// Share feature
+function getShareText() {
+  const activity = currentActivity?.activity || "A fun activity";
+  const quote = currentQuote?.text ? `\n${currentQuote.text} -${currentQuote.author}` : "";
+  return `${activity}${quote}\n\n${location.href}`;
+}
+
+async function shareCurrent() {
+  const text = getShareText();
+  const shareData = { title: "Random Fun Generator", text, url: location.href };
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+  } else {
+    await navigator.clipboard.writeText(text);
+    alert("copied to clipboard!");
+    }
+  } catch (e) {
+    console.error("[Share failed]", e);
+    await navigator.clipboard.writeText(text);
+    alert("copied to clipboard instead!");
+  }
+}
+
 //  Events 
 form.addEventListener("submit", (e) => { e.preventDefault(); generate(); });
 anotherBtn.addEventListener("click", (e) => { e.preventDefault(); generate(); });
