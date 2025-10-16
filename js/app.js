@@ -128,6 +128,25 @@ async function fetchGif(tag) {
   };
 }
 
+// Quote feature
+async function fetchQuote() {
+  const url = "https://api.quotable.io/random";
+  try {
+    const res = await fetchJSONWithTimeout(url, 8000);
+    return { text: res.content, author: res.author };
+  } catch (e) {
+    console.warn("[Quote fetch failed]", e);
+    return { text: "Do something today that your future self will thank you for.", author: "Unknown" };
+  }
+}
+
+function renderQuote(q) {
+  if (!quoteEl || !authorEl) return 
+  quoteEl.textContent = `"{q.text}"`;
+  authorEl.textContent = `-${q.author}`;
+  currentQuote = q;
+}
+
 // Rendering 
 function renderActivity(a) {
   activityText.textContent = a.activity;
