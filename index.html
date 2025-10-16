@@ -42,8 +42,8 @@
         </div>
 
         <div class="row">
-          <label for="maxprice">Max Price (0-20)</label>
-          <input id="maxprice" name="maxprice" type="number" min="0" max="20" step="0.1" placeholder="1" />
+          <label for="maxprice">Max Price (0-1)</label>
+          <input id="maxprice" name="maxprice" type="number" min="0" max="1" step="0.1" placeholder="1" />
         </div>
 
         <p id="filters-help" class="help">Filters are optional. Leave blank for anything.</p>
@@ -71,20 +71,19 @@
     </section>
 
     <section id="fun-section">
-      <h2 id="activity"></h2>
-      <img id="gif" alt="fun gif"/>
+  <h2 id="activityFun"></h2>
 
-      <figure class="quote">
-        <blockquote id="quote"></blockquote>
-        <figcaption id="author"></cite></figcaption>
-      </figure>
+  <figure class="quote">
+    <blockquote id="quote"></blockquote>
+    <figcaption><cite id="author"></cite></figcaption>
+  </figure>
 
-      <div class="actions">
-        <button id="boredBtn">I'm bored</button>
-        <button id="shareBtn">Share</button>
-        <button id="themetoggle">Toggle Theme</button>
-      </div>
-    </section>
+  <div class="actions">
+    <button id="shareBtn">Share</button>
+    <button id="themeToggle">🌓</button>
+  </div>
+</section>
+
 
     <!-- Favorites -->
     <section class="favorites" aria-labelledby="favs-title">
