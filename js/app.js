@@ -256,11 +256,39 @@ async function shareCurrent() {
   }
 }
 
-//  Events 
+
+// Dark mode feature
+const THEME_KEY = "theme";
+
+function applyTheme(theme) {
+  const html = document.documentElement;
+  const isDark = theme === "dark";
+  html.classList.toggle("dark", isDark);
+  localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+}
+
+function initTheme() {
+  const stored = local.Storage.getItem(THEME_KEY);
+  if (stored) 
+    return applyTheme(stored);
+  const prefersDark = window.matchMedia("(prefers-colorscheme: dark)").matches;
+  applyTheme(prefersDark ? "dark" : "light");
+}
+
+function toggleTheme() {
+  const current = localStorage.getItem(THEME_KEY) || "light";
+  (document.documentElement.classList.contains ("dark") ? "dark" : "light");
+  applyTheme(current === "dark" ? "light" : "dark");
+}
+
+// Events
+themeToggle?.addEventListener("click", toggleTheme);
+shareBtn?.addEventListener("click", shareCurrent); 
 form.addEventListener("submit", (e) => { e.preventDefault(); generate(); });
 anotherBtn.addEventListener("click", (e) => { e.preventDefault(); generate(); });
 saveBtn.addEventListener("click", (e) => { e.preventDefault(); saveFavorite(); });
 clearFavsBtn.addEventListener("click", () => { localStorage.removeItem("rfg-favs"); renderFavorites(); setStatus("Favorites cleared."); });
 
-// Init
+
 renderFavorites();
+initTheme();
