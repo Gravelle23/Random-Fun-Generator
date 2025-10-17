@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Random Fun Generator</title>
+  <meta name="description" content="Get a fun activity idea + a matching GIF when you're bored." />
+  <link rel="preconnect" href="https://api.giphy.com">
+  <link rel="preconnect" href="https://www.boredapi.com">
+  <script type="module" crossorigin src="/random-fun-generator/assets/index-DWuKrKl9.js"></script>
+  <link rel="stylesheet" crossorigin href="/random-fun-generator/assets/index-D6Vt_NOT.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Random Fun Generator</h1>
+    <p class="tagline">Bored? Get an activity idea + a GIF in one click.</p>
+  </header>
+
+  <main class="container">
+    <!-- Filters -->
+    <section class="controls" aria-labelledby="filters-title">
+      <h2 id="filters-title">Filters</h2>
+      <form id="filters" aria-describedby="filters-help">
+        <div class="row">
+          <label for="type">Type</label>
+          <select id="type" name="type">
+            <option value="">Any</option>
+            <option>education</option>
+            <option>recreational</option>
+            <option>social</option>
+            <option>diy</option>
+            <option>charity</option>
+            <option>cooking</option>
+            <option>relaxation</option>
+            <option>music</option>
+            <option>busywork</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="participants">Participants</label>
+          <input id="participants" name="participants" type="number" min="1" max="8" placeholder="Any" />
+        </div>
+
+        <div class="row">
+          <label for="maxprice">Max Price (0-1)</label>
+          <input id="maxprice" name="maxprice" type="number" min="0" max="1" step="0.1" placeholder="1" />
+        </div>
+
+        <p id="filters-help" class="help">Filters are optional. Leave blank for anything.</p>
+        <button id="generateBtn" type="submit" class="btn primary">I'm bored—surprise me!</button>
+      </form>
+    </section>
+
+    <!-- Result -->
+    <section class="result" aria-live="polite" aria-busy="false">
+      <div class="card" id="activityCard" hidden>
+        <div class="card-body">
+          <h2 id="activityText">Your activity will appear here</h2>
+          <ul class="meta" id="activityMeta"></ul>
+          <div class="actions">
+            <button id="saveBtn" class="btn">Save to Favorites</button>
+            <button id="anotherBtn" class="btn ghost" type="button">Another one</button>
+          </div>
+        </div>
+        <figure class="gif-wrap">
+          <img id="gif" alt="Fun GIF related to the activity" />
+          <figcaption id="gifCaption" class="sr-only"></figcaption>
+        </figure>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section id="fun-section">
+  <h2 id="activityFun"></h2>
+
+  <figure class="quote">
+    <blockquote id="quote"></blockquote>
+    <figcaption><cite id="author"></cite></figcaption>
+  </figure>
+
+  <div class="actions">
+    <button id="shareBtn">Share</button>
+    <button id="themeToggle">🌓</button>
+  </div>
+</section>
+
+
+    <!-- Favorites -->
+    <section class="favorites" aria-labelledby="favs-title">
+      <h2 id="favs-title">Favorites</h2>
+      <ul id="favoritesList" class="favs-list" aria-live="polite"></ul>
+      <button id="clearFavs" class="btn danger" type="button">Clear favorites</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>APIs: BoredAPI & Giphy • Built for WDD coursework</small>
+  </footer>
+
+</body>
+</html>
